@@ -1,0 +1,26 @@
+{
+  "name": "redux-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn build-wasm && yarn copy-files && rollup -c",
+    "build-rust": "cargo +nightly build --target wasm32-unknown-unknown",
+    "build-wasm": "wasm-bindgen --target web target/wasm32-unknown-unknown/debug/redux_generator.wasm --out-dir pkg",
+    "clean": "rm dist/* pkg/*",
+    "copy-files": "cp pkg/* dist && cp index.html dist",
+    "serve": "serve dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-typescript": "^4.0.0",
+    "@rollup/plugin-wasm": "^3.0.0",
+    "rollup": "^1.32.0",
+    "serve": "^11.3.0",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
+  }
+}
